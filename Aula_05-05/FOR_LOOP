@@ -1,0 +1,32 @@
+EPE115F9C7
+ARQUIVO DO QUARTUS
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity maria is
+    port (
+    
+        a : in std_logic_vector (7 downto 0);
+        y : out std_logic
+    );
+end entity;
+
+architecture case_arch of maria is
+        signal p : std_logic_vector (7 downto 0);
+begin
+
+            process(a,p)
+            begin
+            p(0) <= a(0);
+            
+            for i in 1 to 7 loop
+             p(i) <= p(i-1) xor a(i);
+             
+            end loop;
+        
+    end process;
+
+    y <= p(7);
+    
+end case_arch;    
